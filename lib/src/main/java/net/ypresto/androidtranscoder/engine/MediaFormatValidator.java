@@ -16,6 +16,7 @@
 package net.ypresto.androidtranscoder.engine;
 
 import android.media.MediaFormat;
+import android.util.Log;
 
 import net.ypresto.androidtranscoder.format.MediaFormatExtraConstants;
 import net.ypresto.androidtranscoder.utils.AvcCsdUtils;
@@ -37,7 +38,15 @@ class MediaFormatValidator {
         ByteBuffer spsBuffer = AvcCsdUtils.getSpsBuffer(format);
         byte profileIdc = AvcSpsUtils.getProfileIdc(spsBuffer);
         if (profileIdc != PROFILE_IDC_BASELINE) {
+            
+            /**
+            Ning Wei 2018/05/29
+            Fix bug: Video captured with MEIZU and some vivo phone was blocked during validation. Just skip the test.
             throw new InvalidOutputFormatException("Non-baseline AVC video profile is not supported by Android OS, actual profile_idc: " + profileIdc);
+            **/
+            Log.e("MediaFormatValidator", "AVC video profile is not baseline, error may occurred during video processing, actual profile_idc: " + profileIdc);
+            
+            /** END **/
         }
     }
 
