@@ -3,6 +3,12 @@ android-transcoder
 
 Hardware accelerated transcoder for Android, written in pure Java.
 
+## Notice
+THIS REPO WAS OPTIMIZED FOR LeySerKids, A BRAND OF GRAPECITY INC.
+
+The major enhancements are:
+1. Support the MEIZU phone and some vivo phone.
+
 ## Why?
 
 Android does not offer straight forward way to transcode video.
